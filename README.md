@@ -1,1 +1,1 @@
-Created this custom JavaScript for personal use.
+Created this custom JavaScript for personal use only.

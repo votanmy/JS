@@ -1,6 +1,36 @@
+/*
+How to use:
+=================
+METHOD 1:
+=================
+Chrome:
+- Developer tool > Sources > Snippets > Create new snippet > paste code > Ctrl+S > right click on snippet name > Run.
+- The provided clock field allows changing running time instead of default set as of "09:00:01". Leave it as is to run at default time.
+Other:
+- Developer tool > Console > paste this full code into console then run it.
+=================
+METHOD 2:
+=================
+Paste one of these two code into console to use js file stored in github
+
+fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js').then(response => response.text()).then(text => eval(text)).then(() => {})
+OR
+eval(await (await fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js')).text())
+*/
+
 let clock = '09:00:01';
 let intervalId;
 const regButtons = [];
+
+// Load all tabs content for them ready to interactive
+document.querySelectorAll('.ant-tabs-tab:not(.ant-tabs-tab-active)').forEach(element => {
+  setTimeout(() => {
+    element.click();
+  }, 1000);
+});
+setTimeout(() => {
+  document.getElementsByClassName('ant-tabs-nav-list')[0].firstElementChild.click();
+}, 1000);
 
 // Add new elements to control
 var newInput = document.createElement('input');
@@ -64,7 +94,8 @@ style.textContent = `
     border: 5px solid green;
     background-color: lightgreen !important;
   }
-  .ant-card-hoverable:has(.ant-card-actions):has(button.registered){
+  .ant-card-hoverable:has(.ant-card-actions):has(button.registered),
+  .ant-card.remove-cursor:has(.ant-card-actions):has(button.registered){
     border: 5px solid green;
     background-color: lightgreen !important;
   }

@@ -1,6 +1,10 @@
 /*
 How to use:
 =================
+GENERAL NOTE:
+=================
+Wait for an alert that say "READY NOW!" then start register your classes
+=================
 METHOD 1:
 =================
 Chrome:
@@ -23,17 +27,15 @@ let intervalId;
 const regButtons = [];
 
 // Load all tabs content for them ready to interactive.
-// This needs to run in separated snippet. It may doens't work in a same file.
-// OR just manually load all tab then run this script.
-/*setTimeout(() => {
-document.querySelector('.ant-tabs-tab:nth-child(2)').click();
+setTimeout(() => {
+  document.querySelector('.ant-tabs-tab:nth-child(2)').click();
 }, 1000);
 setTimeout(() => {
-document.querySelector('.ant-tabs-tab:nth-child(3)').click();
+  document.querySelector('.ant-tabs-tab:nth-child(3)').click();
 }, 1000);
 setTimeout(() => {
-document.querySelector('.ant-tabs-tab:nth-child(1)').click();
-}, 1000);*/
+  document.querySelector('.ant-tabs-tab:nth-child(1)').click();
+}, 1000);
 
 // Add new elements to control
 var newInput = document.createElement('input');
@@ -61,14 +63,17 @@ function regClass(clock, regButtons) {
 }
 
 // Select classes, highlight them then trigger submit
-Array.from(document.getElementsByClassName('ant-card-hoverable')).forEach( (ele) =>{
-  ele.onclick = function(){
-    if( this.querySelector('.register') !== null ){
-      this.classList.add('selected');
-      regButtons.push(this.querySelector('.register'));
+setTimeout(() => {
+  Array.from(document.getElementsByClassName('ant-card-hoverable')).forEach( (ele) =>{
+    ele.onclick = function(){
+      if( this.querySelector('.register') !== null ){
+        this.classList.add('selected');
+        regButtons.push(this.querySelector('.register'));
+      }
     }
-  }
-});
+  });
+  alert('READY NOW!');
+}, 5000);
 
 // Trigger submit
 document.getElementById('regall').onclick = function(){

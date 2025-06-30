@@ -4,10 +4,10 @@ How to use:
 METHOD 1:
 =================
 Chrome:
-- Developer tool > Sources > Snippets > Create new snippet > paste code > Ctrl+S > right click on snippet name > Run.
+- Developer tool > Sources > Snippets > Create new snippet > paste this script > Ctrl+S > right click on snippet name > Run.
 - The provided clock field allows changing running time instead of default set as of "09:00:01". Leave it as is to run at default time.
 Other:
-- Developer tool > Console > paste this full code into console then run it.
+- Developer tool > Console > paste this full script into console then run it.
 =================
 METHOD 2:
 =================
@@ -22,8 +22,9 @@ let clock = '09:00:01';
 let intervalId;
 const regButtons = [];
 
-// Load all tabs content for them ready to interactive
-// This needs to run in separated snippet. It may doens't work in a same file
+// Load all tabs content for them ready to interactive.
+// This needs to run in separated snippet. It may doens't work in a same file.
+// OR just manually load all tab then run this script.
 /*setTimeout(() => {
 document.querySelector('.ant-tabs-tab:nth-child(2)').click();
 }, 1000);

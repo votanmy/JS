@@ -26,13 +26,13 @@ const regButtons = [];
 // This needs to run in separated snippet. It may doens't work in a same file
 /*setTimeout(() => {
 document.querySelector('.ant-tabs-tab:nth-child(2)').click();
-}, 3000);
+}, 1000);
 setTimeout(() => {
 document.querySelector('.ant-tabs-tab:nth-child(3)').click();
-}, 3000);
+}, 1000);
 setTimeout(() => {
 document.querySelector('.ant-tabs-tab:nth-child(1)').click();
-}, 3000);*/
+}, 1000);*/
 
 // Add new elements to control
 var newInput = document.createElement('input');
@@ -82,15 +82,20 @@ document.getElementById('regall').onclick = function(){
 const style = document.createElement('style');
 style.textContent = `
   input#altclock {
-    padding: 10px;
+    padding: 7px;
+    font-size: 15px;
+    border-radius: 6px;
+    text-align: center;
+    width: 100px;
   }
   button#regall {
     cursor: pointer;
     background-color: green;
     color: #fff;
-    padding: 10px;
+    padding: 7px 15px 7px 15px;
     text-transform: uppercase;
     font-family: SVN-Brandon-Grotesque;
+    border-radius: 6px;
   }
   .ant-card.ant-card-hoverable.selected {
     border: 5px solid green;

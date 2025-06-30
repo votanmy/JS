@@ -23,14 +23,16 @@ let intervalId;
 const regButtons = [];
 
 // Load all tabs content for them ready to interactive
-document.querySelectorAll('.ant-tabs-tab:not(.ant-tabs-tab-active)').forEach(element => {
-  setTimeout(() => {
-    element.click();
-  }, 1000);
-});
+// This needs to run in separated snippet. It may doens't work in a same file
+/*setTimeout(() => {
+document.querySelector('.ant-tabs-tab:nth-child(2)').click();
+}, 3000);
 setTimeout(() => {
-  document.getElementsByClassName('ant-tabs-nav-list')[0].firstElementChild.click();
-}, 1000);
+document.querySelector('.ant-tabs-tab:nth-child(3)').click();
+}, 3000);
+setTimeout(() => {
+document.querySelector('.ant-tabs-tab:nth-child(1)').click();
+}, 3000);*/
 
 // Add new elements to control
 var newInput = document.createElement('input');

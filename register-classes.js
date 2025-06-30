@@ -16,10 +16,9 @@ Other:
 METHOD 2:
 =================
 Paste one of these two code into console to use js file stored in github
-
-fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js').then(response => response.text()).then(text => eval(text)).then(() => {})
-OR
 eval(await (await fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js')).text())
+OR
+fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js').then(response => response.text()).then(text => eval(text)).then(() => {})
 */
 
 let clock = '09:00:01';

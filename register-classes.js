@@ -105,11 +105,15 @@ setTimeout(() => {
 
 // Trigger submit
 document.getElementById('regall').onclick = function(){
+    clearInterval(intervalId);
   	if( document.getElementById('altclock').value !== '00:00:00' ){
   		clock = document.getElementById('altclock').value;
   	}
     intervalId = setInterval(regClass, 1000, clock, regButtons);
-    console.log(regButtons);	
+    console.log(regButtons);
+    setTimeout(() => {
+      alert("ALL SELECTED CLASSES WILL AUTOMATICALLY REGISTERED AT " + clock);
+    }, 1000);
 }
 
 // Styling: highlight registered classes

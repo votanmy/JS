@@ -19,6 +19,15 @@ Paste one of these two code into console to use js file stored in github
 eval(await (await fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js')).text())
 OR
 fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js').then(response => response.text()).then(text => eval(text)).then(() => {})
+=================
+METHOD 3:
+=================
+Create a browser bookmark then place this to the URL field
+javascript:fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js').then(response => response.text()).then(text => eval(text)).then(() => {})
+OR (this maybe throw error)
+javascript:eval(await (await fetch('https://raw.githubusercontent.com/votanmy/JS/refs/heads/main/register-classes.js')).text())
+
+Now open the talkfirst.com page the load the bookmark into the page to use the script
 */
 
 let clock = '09:00:01';
@@ -37,12 +46,24 @@ setTimeout(() => {
 }, 1000);
 
 // Add new elements to control
+// Real time clock
+var newInput = document.createElement('input');
+newInput.type = 'text';
+newInput.id = 'realclock';
+newInput.classList.add('myclock');
+newInput.value = '';
+newInput.disabled = true;
+document.getElementsByClassName('ant-tabs-extra-content')[0].appendChild(newInput);
+
+// Set custom time to run
 var newInput = document.createElement('input');
 newInput.type = 'text';
 newInput.id = 'altclock';
+newInput.classList.add('myclock');
 newInput.value = '00:00:00';
 document.getElementsByClassName('ant-tabs-extra-content')[0].appendChild(newInput);
 
+// Submit button
 var newBttn = document.createElement('button');
 newBttn.textContent = 'Register All';
 newBttn.id = 'regall';
@@ -61,6 +82,14 @@ function regClass(clock, regButtons) {
   }
 }
 
+// Show real time clock
+setInterval(realClock, 1000);
+function realClock() {
+  const d = new Date();
+  const t = d.toLocaleTimeString();
+  document.querySelector('#realclock').value = t;
+}
+
 // Select classes, highlight them then trigger submit
 setTimeout(() => {
   Array.from(document.getElementsByClassName('ant-card-hoverable')).forEach( (ele) =>{
@@ -71,7 +100,7 @@ setTimeout(() => {
       }
     }
   });
-  alert('READY NOW!');
+  alert("LET'S START!");
 }, 5000);
 
 // Trigger submit
@@ -86,12 +115,18 @@ document.getElementById('regall').onclick = function(){
 // Styling: highlight registered classes
 const style = document.createElement('style');
 style.textContent = `
-  input#altclock {
+  input.myclock {
+    background-color: #fff;
+    border: none;
     padding: 7px;
+    margin: 0 3px;
     font-size: 15px;
     border-radius: 6px;
     text-align: center;
     width: 100px;
+  }
+  #realclock {
+      background-color: gold;
   }
   button#regall {
     cursor: pointer;

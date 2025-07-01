@@ -32,6 +32,7 @@ Now open the talkfirst.com page the load the bookmark into the page to use the s
 
 let clock = '09:00:01';
 let intervalId;
+let realClock_intervalId;
 const regButtons = [];
 
 // Load all tabs content for them ready to interactive.
@@ -75,6 +76,7 @@ function regClass(clock, regButtons) {
   const t = d.toLocaleTimeString();
   if(t == clock){
     clearInterval(intervalId);
+    clearInterval(realClock_intervalId);
     regButtons.forEach( (bttn) =>{bttn.click()} );
     setTimeout(() => {
       document.querySelectorAll('.ant-btn-primary').forEach( (submit) =>{submit.click()} );
@@ -83,7 +85,7 @@ function regClass(clock, regButtons) {
 }
 
 // Show real time clock
-setInterval(realClock, 1000);
+realClock_intervalId = setInterval(realClock, 1000);
 function realClock() {
   const d = new Date();
   const t = d.toLocaleTimeString();

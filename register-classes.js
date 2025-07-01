@@ -112,7 +112,7 @@ document.getElementById('regall').onclick = function(){
     intervalId = setInterval(regClass, 1000, clock, regButtons);
     console.log(regButtons);
     setTimeout(() => {
-      alert("ALL SELECTED CLASSES WILL AUTOMATICALLY REGISTERED AT " + clock);
+      alert(regButtons.length + " SELECTED CLASSES WILL BE REGISTERED AT " + clock);
     }, 1000);
 }
 

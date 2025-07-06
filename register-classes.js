@@ -81,7 +81,7 @@ function regClass(clock, regButtons) {
     setTimeout(() => {
       document.querySelectorAll('.ant-btn-primary').forEach( (bttn) =>{
         bttn.click();
-        // for testing: list of classes (don't use when register)
+        // for testing: list of classes (don't use it when register)
         // console.log(bttn.parentElement.previousElementSibling.querySelector('.ant-modal-confirm-content strong').textContent);
       } );
     }, 1000);

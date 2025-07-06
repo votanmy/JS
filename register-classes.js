@@ -159,7 +159,6 @@ style.textContent = `
   }
   .ant-card-hoverable:has(.ant-card-actions):has(button.registered),
   .ant-card.remove-cursor:has(.ant-card-actions):has(button.registered){
-    border: 5px solid green;
     background-color: lightgreen !important;
   }
 `;

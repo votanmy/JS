@@ -34,6 +34,7 @@ let clock = '09:00:01';
 let intervalId;
 let realClock_intervalId;
 const regButtons = [];
+let idx = 0;
 
 // Load all tabs content for them ready to interactive.
 setTimeout(() => {
@@ -92,15 +93,26 @@ function realClock() {
   document.querySelector('#realclock').value = t;
 }
 
-// Select classes, highlight them then trigger submit
+// Select classes, highlight them then trigger submit. Also allows deselect.
 setTimeout(() => {
   Array.from(document.getElementsByClassName('ant-card-hoverable')).forEach( (ele) =>{
     ele.onclick = function(){
-      if( this.querySelector('.register') !== null ){
-        this.classList.add('selected');
-        regButtons.push(this.querySelector('.register'));
+      if( ele.querySelector('.register') !== null ){
+        ele.classList.toggle('selected');
+        if (ele.classList.contains('selected')) {
+          // Select button
+          regButtons.push(ele.querySelector('.register'));
+        }else{
+          // Deselect button
+          let index = regButtons.indexOf(ele.querySelector('.register'));
+          console.log(index);
+          if ( index > -1 ) {
+            regButtons.splice(index, 1);
+          }
+        }
       }
-    }
+      console.log(regButtons);
+    }    
   });
   alert("LET'S START!");
 }, 5000);

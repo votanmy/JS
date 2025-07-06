@@ -155,7 +155,6 @@ style.textContent = `
     border-radius: 6px;
   }
   .ant-card.ant-card-hoverable.selected {
-    border: 5px solid green;
     background-color: lightgreen !important;
   }
   .ant-card-hoverable:has(.ant-card-actions):has(button.registered),

@@ -105,7 +105,6 @@ setTimeout(() => {
         }else{
           // Deselect button
           let index = regButtons.indexOf(ele.querySelector('.register'));
-          console.log(index);
           if ( index > -1 ) {
             regButtons.splice(index, 1);
           }

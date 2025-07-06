@@ -34,7 +34,6 @@ let clock = '09:00:01';
 let intervalId;
 let realClock_intervalId;
 const regButtons = [];
-let idx = 0;
 
 // Load all tabs content for them ready to interactive.
 setTimeout(() => {
@@ -78,9 +77,13 @@ function regClass(clock, regButtons) {
   if(t == clock){
     clearInterval(intervalId);
     clearInterval(realClock_intervalId);
-    regButtons.forEach( (bttn) =>{bttn.click()} );
+    regButtons.forEach( (button) =>{button.click()} );
     setTimeout(() => {
-      document.querySelectorAll('.ant-btn-primary').forEach( (submit) =>{submit.click()} );
+      document.querySelectorAll('.ant-btn-primary').forEach( (bttn) =>{
+        bttn.click();
+        // for testing: list of classes (don't use when register)
+        // console.log(bttn.parentElement.previousElementSibling.querySelector('.ant-modal-confirm-content strong').textContent);
+      } );
     }, 1000);
   }
 }
@@ -93,37 +96,41 @@ function realClock() {
   document.querySelector('#realclock').value = t;
 }
 
-// Select classes, highlight them then trigger submit. Also allows deselect.
+// Select / deselect classes, highlight then trigger submit.
 setTimeout(() => {
-  Array.from(document.getElementsByClassName('ant-card-hoverable')).forEach( (ele) =>{
+  document.querySelectorAll('.ant-card-body').forEach( (ele) =>{
+    let parent = ele.parentElement;
+    let regbtn = ele.nextElementSibling.querySelector('.register');
     ele.onclick = function(){
-      if( ele.querySelector('.register') !== null ){
-        ele.classList.toggle('selected');
-        if (ele.classList.contains('selected')) {
-          // Select button
-          regButtons.push(ele.querySelector('.register'));
+      if( regbtn !== null ){
+        parent.classList.toggle('selected');
+        if (parent.classList.contains('selected')) {
+          // Select class
+          regButtons.push(regbtn);
         }else{
-          // Deselect button
-          let index = regButtons.indexOf(ele.querySelector('.register'));
-          if ( index > -1 ) {
-            regButtons.splice(index, 1);
+          // Deselect class
+          let idx = regButtons.indexOf(regbtn);
+          if ( idx > -1 ) {
+            regButtons.splice(idx, 1);
           }
         }
       }
+      console.log('selected:');
       console.log(regButtons);
-    }    
+    }
   });
   alert("LET'S START!");
 }, 5000);
 
 // Trigger submit
 document.getElementById('regall').onclick = function(){
+    // remove old interval
     clearInterval(intervalId);
   	if( document.getElementById('altclock').value !== '00:00:00' ){
   		clock = document.getElementById('altclock').value;
   	}
+    // set new interval
     intervalId = setInterval(regClass, 1000, clock, regButtons);
-    console.log(regButtons);
     setTimeout(() => {
       alert(regButtons.length + " SELECTED CLASSES WILL BE REGISTERED AT " + clock);
     }, 1000);
